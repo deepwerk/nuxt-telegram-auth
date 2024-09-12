@@ -23,7 +23,7 @@ export default eventHandler(async (event) => {
 
     if (Date.now() / 1000 - decodedCookie.auth_date > 86400) return handleUnauthorized();
 
-    const secret = runtimeConfig.TELEGRAM_TOKEN;
+    const secret = Buffer.from(runtimeConfig.TELEGRAM_TOKEN, 'hex');
 
     /*
         This part creates a data-check-string in here as referred in documentation
