@@ -23,8 +23,7 @@ export default eventHandler(async (event) => {
 
     if (Date.now() / 1000 - decodedCookie.auth_date > 86400) return handleUnauthorized();
 
-    const telegramApiToken = runtimeConfig.TELEGRAM_TOKEN;
-    const secret = crypto.createHash("sha256").update(telegramApiToken).digest();
+    const secret = runtimeConfig.TELEGRAM_TOKEN;
 
     /*
         This part creates a data-check-string in here as referred in documentation
